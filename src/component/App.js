@@ -5,7 +5,7 @@ import Players from "./Players";
 import Teams from "./Teams";
 
 function App() {
-  const [page, setPage] = useState("teams");
+  const [page, setPage] = useState("players");
 
   return (
     <div className="App">
@@ -14,7 +14,7 @@ function App() {
       </header>
       <Nav setPage={setPage} />
       <div className="content">
-        {page === "teams" ? <Teams /> : <Players />}
+        {page === "players" ? <Players /> : <Teams />}
       </div>
     </div>
   );
