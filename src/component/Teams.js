@@ -1,15 +1,15 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Player from "./Player";
+import Team from "./Team";
 
 const fetchPlayers = async () => {
-  const res = await fetch("https://www.balldontlie.io/api/v1/players");
-  const players = await res.json();
-  return players;
+  const res = await fetch("https://www.balldontlie.io/api/v1/teams");
+  const teams = await res.json();
+  return teams;
 };
 
-const Players = () => {
-  const { data, status } = useQuery("players", fetchPlayers);
+const Teams = () => {
+  const { data, status } = useQuery("teams", fetchPlayers);
   console.log(data, status);
 
   return (
@@ -19,8 +19,8 @@ const Players = () => {
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
         <ul>
-          {data.data.map((player) => (
-            <Player player={player} key={player.id} />
+          {data.data.map((team) => (
+            <Team team={team} key={team.id} />
           ))}
         </ul>
       )}
@@ -28,4 +28,4 @@ const Players = () => {
   );
 };
 
-export default Players;
+export default Teams;
