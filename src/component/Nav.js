@@ -4,8 +4,12 @@ import "../index.css";
 const Nav = ({ setPage }) => {
   return (
     <nav>
-      <button onClick={() => setPage("teams")}>teams</button>
-      <button onClick={() => setPage("players")}>players</button>
+      <button className="list" onClick={() => setPage("teams")}>
+        teams
+      </button>
+      <button className="list" onClick={() => setPage("players")}>
+        players
+      </button>
     </nav>
   );
 };
