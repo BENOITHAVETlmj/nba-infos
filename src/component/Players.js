@@ -1,5 +1,5 @@
 import React from "react";
-import { usePaginatedQuery } from "react-query";
+import { useQuery } from "react-query";
 import Player from "./Player";
 
 const fetchPlayers = async (key, page) => {
@@ -12,10 +12,9 @@ const fetchPlayers = async (key, page) => {
 
 const Players = () => {
   const [page, setPage] = React.useState(1);
-  const { resolvedData, status } = usePaginatedQuery(
-    ["players", page],
-    fetchPlayers
-  );
+  const { data, status } = useQuery(["players", page], fetchPlayers, {
+    keepPreviousData: true,
+  });
   const pagesNumbers = [];
 
   function pagination(pagesNumber) {
@@ -50,16 +49,16 @@ const Players = () => {
           <button
             className="page-number"
             onClick={() => setPage(page + 1)}
-            disabled={page === resolvedData.meta.total_pages}
+            disabled={page === data.meta.total_pages}
           >
             Next
           </button>
           <ul>
-            {resolvedData.data.map((player) => (
+            {data.data.map((player) => (
               <Player player={player} key={player.id} />
             ))}
           </ul>
-          <>{pagination(resolvedData.meta.total_pages)}</>
+          <>{pagination(data.meta.total_pages)}</>
         </>
       )}
     </>
