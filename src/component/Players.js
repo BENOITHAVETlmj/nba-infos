@@ -20,7 +20,6 @@ const Players = () => {
     }
   );
 
-  console.log(isPreviousData);
   const pagesNumbers = [];
 
   function pagination(pagesNumber) {
@@ -51,7 +50,7 @@ const Players = () => {
           >
             Back
           </button>
-          <span>{page}</span>
+          <span>page {page}</span>
           <button
             className="page-number"
             onClick={() => {

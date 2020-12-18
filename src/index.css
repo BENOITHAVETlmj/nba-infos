@@ -20,16 +20,22 @@ code {
 
 .App-header-text {
   border: 3px solid white;
-  width: 300px;
   border-radius: 4px;
   padding: 10px;
   color: white;
   font-weight: 700;
   font-size: 30px;
-  margin-bottom: 30px;
+  display: table-cell;
+}
+
+.App-header-text:after {
+  content: "";
+  display: table-cell;
+  width: 100%;
 }
 
 nav {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }

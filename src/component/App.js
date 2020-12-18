@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-header-text">NBA PLAYERS INFOS</div>
+        <div className="App-header-text">NBA INFOS</div>
       </header>
       <Nav setPage={setPage} />
       <div className="content">
