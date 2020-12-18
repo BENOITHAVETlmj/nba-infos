@@ -1,37 +1,67 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { usePaginatedQuery } from "react-query";
 import Player from "./Player";
 
-const fetchPlayers = async () => {
-  const res = await fetch("https://www.balldontlie.io/api/v1/players?page=3");
-  const players = await res.json();
-  return players;
+const fetchPlayers = async (key, page) => {
+  const res = await fetch(
+    `https://www.balldontlie.io/api/v1/players?page=${page}`
+  );
+  const data = res.json();
+  return data;
 };
 
 const Players = () => {
-  const { data, status } = useQuery("players", fetchPlayers);
+  const [page, setPage] = React.useState(1);
+  const { resolvedData, status } = usePaginatedQuery(
+    ["players", page],
+    fetchPlayers
+  );
   const pagesNumbers = [];
 
-  for (let i = 0; i < 131; i++) {
-    pagesNumbers.push(i);
+  function pagination(pagesNumber) {
+    for (let i = 1; i <= pagesNumber; i++) {
+      pagesNumbers.push(i);
+    }
+    return pagesNumbers.map((pageNumber) => (
+      <button
+        onClick={() => setPage(pageNumber)}
+        key={pageNumber}
+        className="page-number"
+      >
+        {pageNumber}
+      </button>
+    ));
   }
-
-  console.log(pagesNumbers);
 
   return (
     <>
       {status === "loading" && <div>Loading data...</div>}
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
-        <ul>
-          {data.data.map((player) => (
-            <Player player={player} key={player.id} />
-          ))}
-        </ul>
+        <>
+          <button
+            className="page-number"
+            onClick={() => setPage(page - 1)}
+            disabled={page === 1}
+          >
+            Back
+          </button>
+          <span>{page}</span>
+          <button
+            className="page-number"
+            onClick={() => setPage(page + 1)}
+            disabled={page === resolvedData.meta.total_pages}
+          >
+            Next
+          </button>
+          <ul>
+            {resolvedData.data.map((player) => (
+              <Player player={player} key={player.id} />
+            ))}
+          </ul>
+          <>{pagination(resolvedData.meta.total_pages)}</>
+        </>
       )}
-      {pagesNumbers.map((pageNumber) => (
-        <button className="page-number">{pageNumber}</button>
-      ))}
     </>
   );
 };
