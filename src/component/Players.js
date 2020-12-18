@@ -12,9 +12,15 @@ const fetchPlayers = async (key, page) => {
 
 const Players = () => {
   const [page, setPage] = React.useState(1);
-  const { data, status } = useQuery(["players", page], fetchPlayers, {
-    keepPreviousData: true,
-  });
+  const { isPreviousData, data, status } = useQuery(
+    ["players", page],
+    fetchPlayers,
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  console.log(isPreviousData);
   const pagesNumbers = [];
 
   function pagination(pagesNumber) {
@@ -40,7 +46,7 @@ const Players = () => {
         <>
           <button
             className="page-number"
-            onClick={() => setPage(page - 1)}
+            onClick={() => setPage((old) => Math.max(old - 1, 1))}
             disabled={page === 1}
           >
             Back
@@ -48,8 +54,12 @@ const Players = () => {
           <span>{page}</span>
           <button
             className="page-number"
-            onClick={() => setPage(page + 1)}
-            disabled={page === data.meta.total_pages}
+            onClick={() => {
+              if (!isPreviousData) {
+                setPage((old) => old + 1);
+              }
+            }}
+            disabled={isPreviousData || page === data.meta.total_pages}
           >
             Next
           </button>
