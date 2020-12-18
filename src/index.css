@@ -25,13 +25,7 @@ code {
   color: white;
   font-weight: 700;
   font-size: 30px;
-  display: table-cell;
-}
-
-.App-header-text:after {
-  content: "";
-  display: table-cell;
-  width: 100%;
+  width: fit-content;
 }
 
 nav {
