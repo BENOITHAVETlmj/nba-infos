@@ -2,28 +2,65 @@ import React from "react";
 import { useQuery } from "react-query";
 import Team from "./Team";
 
+const display = {
+  all: "all",
+  east: "East",
+  west: "West"
+}
+
 const fetchPlayers = async () => {
   const res = await fetch("https://www.balldontlie.io/api/v1/teams");
   const teams = await res.json();
   return teams;
 };
 
+const reducer = (state, action) => {
+  console.log(state);
+  switch(action.type) {
+    case display.all: 
+    return display.all;
+    case display.east: 
+    return display.east;
+    case display.west: 
+    return display.west;
+    default:
+      console.error('something went wrong');
+}
+
+}
+
 const Teams = () => {
   const { data, status } = useQuery("teams", fetchPlayers);
-  console.log(data, status);
-
+  const [conferenceDisplay, dispatch] = React.useReducer(reducer, display.all)
   return (
     <>
-      {/* <p>{status}</p> */}
       {status === "loading" && <div>Loading data...</div>}
       {status === "error" && <div>Error fetching data</div>}
-      {status === "success" && (
+      {status === "success" && 
+        <>
+          <button disabled={conferenceDisplay === display.all} onClick={()=> dispatch({type: display.all})}>All</button>
+          <button disabled={conferenceDisplay === display.east} onClick={()=> dispatch({type: display.east})}>East</button>
+          <button disabled={conferenceDisplay === display.west} onClick={()=> dispatch({type: display.west})}>West</button>
+          </>
+      }
+      {status === "success" && conferenceDisplay === display.all && (
         <ul>
           {data.data.map((team) => (
             <Team team={team} key={team.id} />
           ))}
         </ul>
+
       )}
+      {status === "success" && conferenceDisplay === display.east &&
+      <ul>{data.data.filter(team =>team.conference === "East" ).map((team) => (
+            <Team team={team} key={team.id} />
+        ))}</ul>
+      } 
+      {status === "success" && conferenceDisplay === display.west &&
+      <ul>{data.data.filter(team =>team.conference === "West" ).map((team) => (
+            <Team team={team} key={team.id} />
+        ))}</ul>
+      } 
     </>
   );
 };

@@ -11,7 +11,6 @@ const fetchPlayers = async (key, page) => {
 };
 
 const Players = () => {
-  console.log("render");
   const [page, setPage] = React.useState(1);
   const { isPreviousData, data, status } = useQuery(
     ["players", page],
@@ -27,7 +26,6 @@ const Players = () => {
     for (let i = 1; i <= pagesNumber; i++) {
       pagesNumbers.push(i);
     }
-    console.log(pagesNumbers);
     return pagesNumbers.map((pageNumber) => (
       <button
         onClick={() => setPage(pageNumber)}
