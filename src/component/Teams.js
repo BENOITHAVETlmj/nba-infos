@@ -52,12 +52,12 @@ const Teams = () => {
 
       )}
       {status === "success" && conferenceDisplay === display.east &&
-      <ul>{data.data.filter(team =>team.conference === "East" ).map((team) => (
+      <ul>{data.data.filter(team =>team.conference === display.east ).map((team) => (
             <Team team={team} key={team.id} />
         ))}</ul>
       } 
       {status === "success" && conferenceDisplay === display.west &&
-      <ul>{data.data.filter(team =>team.conference === "West" ).map((team) => (
+      <ul>{data.data.filter(team =>team.conference === display.west).map((team) => (
             <Team team={team} key={team.id} />
         ))}</ul>
       } 

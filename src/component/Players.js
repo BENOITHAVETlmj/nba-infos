@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Player from "./Player";
+import Pagination from "./Pagination";
 
 const fetchPlayers = async (key, page) => {
   const res = await fetch(
@@ -19,24 +20,6 @@ const Players = () => {
       keepPreviousData: true,
     }
   );
-
-  const pagination = (pagesNumber) => {
-    const pagesNumbers = [];
-    console.log("run pAGINTION");
-    for (let i = 1; i <= pagesNumber; i++) {
-      pagesNumbers.push(i);
-    }
-    return pagesNumbers.map((pageNumber) => (
-      <button
-        onClick={() => setPage(pageNumber)}
-        key={pageNumber}
-        className="page-number"
-      >
-        {pageNumber}
-      </button>
-    ));
-  };
-
   return (
     <>
       {status === "loading" && <div>Loading data...</div>}
@@ -67,7 +50,7 @@ const Players = () => {
               <Player player={player} key={player.id} />
             ))}
           </ul>
-          <>{pagination(data.meta.total_pages)}</>
+          <Pagination meta={data.meta} setPage={setPage}/>
         </>
       )}
     </>
