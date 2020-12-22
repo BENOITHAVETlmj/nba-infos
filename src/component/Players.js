@@ -20,6 +20,8 @@ const Players = () => {
       keepPreviousData: true,
     }
   );
+
+  console.log("page", page);
   return (
     <>
       {status === "loading" && <div>Loading data...</div>}
@@ -50,7 +52,7 @@ const Players = () => {
               <Player player={player} key={player.id} />
             ))}
           </ul>
-          <Pagination meta={data.meta} setPage={setPage}/>
+          <Pagination meta={data.meta} setPage={setPage} />
         </>
       )}
     </>

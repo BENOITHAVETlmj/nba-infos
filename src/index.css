@@ -35,7 +35,7 @@ nav {
 }
 
 button {
-  background-color: red;
+  background-color: rgb(251, 72, 72);
   color: white;
   border: 3px solid white;
   border-radius: 4px;
@@ -43,10 +43,13 @@ button {
 
 button:hover {
   cursor: pointer;
+  position: relative;
+  top: -2px;
+  background-color: rgb(247, 25, 25);
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 button.list {
@@ -58,6 +61,20 @@ button.list {
 button.page-number {
   margin: 5px;
   font-weight: 700;
+  min-width: 40px;
+}
+
+.page-number-from-to {
+  margin: 5px;
+  font-weight: 700;
+  min-width: 40px;
+  color: #01589b;
+  background-color: rgb(252, 252, 252);
+}
+
+.page-number-from-to:hover {
+  color: rgb(252, 252, 252);
+  background-color: #01589b;
 }
 
 .content {
