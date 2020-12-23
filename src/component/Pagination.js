@@ -1,6 +1,7 @@
 import React from "react";
 
-const Pagination = ({ meta, setPage }) => {
+const Pagination = ({ meta, setPage, page }) => {
+  console.log(page);
   const [currentClickablePages, setCurrentClickablePages] = React.useState(1);
   const pagesNumbers = React.useCallback(() => {
     const pagesNumbers = [];
@@ -30,16 +31,18 @@ const Pagination = ({ meta, setPage }) => {
     <>
       <button
         className="page-number-from-to"
+        disabled={page === 1}
         onClick={() => {
           setCurrentClickablePages((old) => Math.max(old - 10, 1));
           setPage(currentClickablePages < 10 ? 1 : currentClickablePages - 10);
         }}
       >
-        Previous 10 pages...
+        Previous...
       </button>
-      {pagesNumbers()} ...
+      {pagesNumbers()} / {meta.total_pages}
       <button
         className="page-number-from-to"
+        disabled={page >= meta.total_pages - 9}
         onClick={() => {
           setCurrentClickablePages(
             currentClickablePages < meta.total_pages - 18
@@ -53,7 +56,7 @@ const Pagination = ({ meta, setPage }) => {
           );
         }}
       >
-        Next 10 pages...
+        Next...
       </button>
     </>
   );

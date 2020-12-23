@@ -51,7 +51,7 @@ const Players = () => {
               <Player player={player} key={player.id} />
             ))}
           </ul>
-          <Pagination meta={data.meta} setPage={setPage} />
+          <Pagination meta={data.meta} setPage={setPage} page={page} />
         </>
       )}
     </>
