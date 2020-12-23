@@ -21,7 +21,6 @@ const Players = () => {
     }
   );
 
-  console.log("page", page);
   return (
     <>
       {status === "loading" && <div>Loading data...</div>}

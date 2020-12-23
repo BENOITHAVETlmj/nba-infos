@@ -26,7 +26,6 @@ const Pagination = ({ meta, setPage }) => {
     ));
   }, [currentClickablePages, setPage, meta]);
 
-  console.log("currentClickablePages", currentClickablePages);
   return (
     <>
       <button
