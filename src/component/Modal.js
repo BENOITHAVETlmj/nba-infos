@@ -7,8 +7,12 @@ const MODAL_STYLE = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   backgroundColor: "white",
-  padding: "50px",
+  borderRadius: "5px",
+  padding: "40px",
+  width: "40%",
   zIndex: 3,
+  maxHeight: "70%",
+  overflow: "auto",
 };
 
 const OVERLAY_STYLES = {

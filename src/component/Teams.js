@@ -1,8 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Team from "./Team";
-import Modal from "./Modal";
-import useModal from "../hooks/useModal";
 
 const display = {
   all: "all",
@@ -17,7 +15,6 @@ const fetchPlayers = async () => {
 };
 
 const reducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case display.all:
       return display.all;
@@ -32,7 +29,7 @@ const reducer = (state, action) => {
 
 const Teams = () => {
   const { data, status } = useQuery("teams", fetchPlayers);
-  const { modal, openModal, closeModal } = useModal();
+
   const [conferenceDisplay, dispatch] = React.useReducer(reducer, display.all);
   return (
     <>
@@ -40,10 +37,6 @@ const Teams = () => {
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
         <>
-          <Modal open={modal} onClose={closeModal}>
-            Hello this is my modal
-          </Modal>
-          <button onClick={openModal}>open Modal</button>
           <button
             disabled={conferenceDisplay === display.all}
             onClick={() => dispatch({ type: display.all })}
@@ -67,7 +60,7 @@ const Teams = () => {
       {status === "success" && conferenceDisplay === display.all && (
         <ul>
           {data.data.map((team) => (
-            <Team team={team} key={team.id} />
+            <Team team={team} key={team.id} teams={data.data} />
           ))}
         </ul>
       )}

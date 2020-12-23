@@ -20,7 +20,6 @@ const Players = () => {
       keepPreviousData: true,
     }
   );
-
   return (
     <>
       {status === "loading" && <div>Loading data...</div>}

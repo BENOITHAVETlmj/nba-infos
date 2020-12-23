@@ -89,7 +89,7 @@ button.page-number {
 .card {
   border: 1px solid white;
   border-radius: 3px;
-  padding: 10px 50px;
+  padding: 1px 50px;
 }
 
 .card:hover {

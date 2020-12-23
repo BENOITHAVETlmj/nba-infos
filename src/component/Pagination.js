@@ -1,7 +1,6 @@
 import React from "react";
 
 const Pagination = ({ meta, setPage, page }) => {
-  console.log(page);
   const [currentClickablePages, setCurrentClickablePages] = React.useState(1);
   const pagesNumbers = React.useCallback(() => {
     const pagesNumbers = [];
