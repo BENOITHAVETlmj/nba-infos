@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
+import useClickOutside from "../hooks/useClickOutside";
 
 const MODAL_STYLE = {
   position: "fixed",
@@ -26,18 +27,23 @@ const OVERLAY_STYLES = {
   zIndex: 3,
 };
 
-function Modal({ open, children, onClose }) {
+const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
+  useClickOutside(ref, () => {
+    if (open) onClose();
+  });
   if (!open) return null;
+  console.log(open);
+
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES}></div>
-      <div style={MODAL_STYLE}>
+      <div style={MODAL_STYLE} ref={ref}>
         <button onClick={onClose}>X</button>
         {children}
       </div>
     </>,
     document.getElementById("portal")
   );
-}
+});
 
 export default Modal;

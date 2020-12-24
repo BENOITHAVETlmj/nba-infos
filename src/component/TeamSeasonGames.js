@@ -15,7 +15,7 @@ const fetchGames = async (key, teamId) => {
 
 function TeamSeasonGames(teamId) {
   const { data, status } = useQuery(["teams", teamId], fetchGames);
-  console.log(status === "success" && data);
+  // console.log(status === "success" && data);
   const gamesInfos =
     status === "success" &&
     data.data.reduce(
@@ -31,7 +31,7 @@ function TeamSeasonGames(teamId) {
       ],
       []
     );
-  console.log(gamesInfos);
+  // console.log(gamesInfos);
 
   return (
     <>
