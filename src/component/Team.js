@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import useModal from "../hooks/useModal";
 import TeamSeasonGames from "./TeamSeasonGames";
 
-const Team = ({ team, teams }) => {
+const Team = ({ team }) => {
   const { modal, openModal, closeModal } = useModal();
   return (
     <>

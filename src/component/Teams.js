@@ -8,6 +8,10 @@ const display = {
   west: "West",
 };
 
+const CONFERENCE_BUTTON_STYLE = {
+  marginRight: "10px",
+};
+
 const fetchPlayers = async () => {
   const res = await fetch("https://www.balldontlie.io/api/v1/teams");
   const teams = await res.json();
@@ -40,18 +44,21 @@ const Teams = () => {
           <button
             disabled={conferenceDisplay === display.all}
             onClick={() => dispatch({ type: display.all })}
+            style={CONFERENCE_BUTTON_STYLE}
           >
             All
           </button>
           <button
             disabled={conferenceDisplay === display.east}
             onClick={() => dispatch({ type: display.east })}
+            style={CONFERENCE_BUTTON_STYLE}
           >
             East
           </button>
           <button
             disabled={conferenceDisplay === display.west}
             onClick={() => dispatch({ type: display.west })}
+            style={CONFERENCE_BUTTON_STYLE}
           >
             West
           </button>

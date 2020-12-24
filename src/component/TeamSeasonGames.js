@@ -6,7 +6,6 @@ const LIST_ITEM_STYLE = {
 };
 
 const fetchGames = async (key, teamId) => {
-  console.log("teamId", teamId.teamId);
   const res = await fetch(
     `https://www.balldontlie.io/api/v1/games?seasons[]=2019&team_ids[]=${teamId.teamId}`
   );
