@@ -43,19 +43,6 @@ button.page-number {
   background-color: #01589b;
 }
 
-.card {
-  border: 1px solid white;
-  border-radius: 3px;
-  padding: 1px 50px;
-}
-
-.card:hover {
-  cursor: pointer;
-  position: relative;
-  top: -4px;
-  box-shadow: 0 0 20px #10344f;
-}
-
 ul {
   list-style: none;
   padding: 0px;
