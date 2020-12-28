@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../ui/Button";
 
 const Pagination = ({ meta, setPage, page }) => {
   const [currentClickablePages, setCurrentClickablePages] = React.useState(1);
@@ -9,7 +10,7 @@ const Pagination = ({ meta, setPage, page }) => {
     }
 
     return pagesNumbers.map((pageNumber) => (
-      <button
+      <Button
         onClick={() => {
           setPage(pageNumber);
           setCurrentClickablePages(
@@ -22,13 +23,13 @@ const Pagination = ({ meta, setPage, page }) => {
         className="page-number"
       >
         {pageNumber}
-      </button>
+      </Button>
     ));
   }, [currentClickablePages, setPage, meta]);
 
   return (
     <>
-      <button
+      <Button
         className="page-number-from-to"
         disabled={page === 1}
         onClick={() => {
@@ -37,9 +38,9 @@ const Pagination = ({ meta, setPage, page }) => {
         }}
       >
         Previous...
-      </button>
+      </Button>
       {pagesNumbers()} / {meta.total_pages}
-      <button
+      <Button
         className="page-number-from-to"
         disabled={page >= meta.total_pages - 9}
         onClick={() => {
@@ -56,7 +57,7 @@ const Pagination = ({ meta, setPage, page }) => {
         }}
       >
         Next...
-      </button>
+      </Button>
     </>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import useClickOutside from "../hooks/useClickOutside";
 import styled from "@emotion/styled";
+import { Button } from "../ui/Button";
 
 const StyledModal = styled.div({
   position: "fixed",
@@ -38,7 +39,7 @@ const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
     <>
       <Overlay />
       <StyledModal ref={ref}>
-        <button onClick={onClose}>X</button>
+        <Button onClick={onClose}>X</Button>
         {children}
       </StyledModal>
     </>,

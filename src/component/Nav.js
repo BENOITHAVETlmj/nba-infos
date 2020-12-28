@@ -1,15 +1,16 @@
 import React from "react";
 import "../index.css";
+import { Button } from "../ui/Button";
 
 const Nav = ({ setPage }) => {
   return (
     <nav>
-      <button className="list" onClick={() => setPage("teams")}>
+      <Button className="list" onClick={() => setPage("teams")}>
         teams
-      </button>
-      <button className="list" onClick={() => setPage("players")}>
+      </Button>
+      <Button className="list" onClick={() => setPage("players")}>
         players
-      </button>
+      </Button>
     </nav>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Team from "./Team";
+import { Button } from "../ui/Button";
 
 const display = {
   all: "all",
@@ -41,27 +42,27 @@ const Teams = () => {
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
         <>
-          <button
+          <Button
             disabled={conferenceDisplay === display.all}
             onClick={() => dispatch({ type: display.all })}
             style={CONFERENCE_BUTTON_STYLE}
           >
             All
-          </button>
-          <button
+          </Button>
+          <Button
             disabled={conferenceDisplay === display.east}
             onClick={() => dispatch({ type: display.east })}
             style={CONFERENCE_BUTTON_STYLE}
           >
             East
-          </button>
-          <button
+          </Button>
+          <Button
             disabled={conferenceDisplay === display.west}
             onClick={() => dispatch({ type: display.west })}
             style={CONFERENCE_BUTTON_STYLE}
           >
             West
-          </button>
+          </Button>
         </>
       )}
       {status === "success" && conferenceDisplay === display.all && (

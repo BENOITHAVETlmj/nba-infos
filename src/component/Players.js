@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import Player from "./Player";
 import Pagination from "./Pagination";
+import { Button } from "../ui/Button";
 
 const fetchPlayers = async (key, page) => {
   const res = await fetch(
@@ -26,15 +27,15 @@ const Players = () => {
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
         <>
-          <button
+          <Button
             className="page-number"
             onClick={() => setPage((old) => Math.max(old - 1, 1))}
             disabled={page === 1}
           >
             Back
-          </button>
+          </Button>
           <span>page {page}</span>
-          <button
+          <Button
             className="page-number"
             onClick={() => {
               if (!isPreviousData) {
@@ -44,7 +45,7 @@ const Players = () => {
             disabled={isPreviousData || page === data.meta.total_pages}
           >
             Next
-          </button>
+          </Button>
           <ul>
             {data.data.map((player) => (
               <Player player={player} key={player.id} />

@@ -24,24 +24,6 @@ nav {
   justify-content: center;
 }
 
-button {
-  background-color: rgb(251, 72, 72);
-  color: white;
-  border: 3px solid white;
-  border-radius: 4px;
-}
-
-button:hover {
-  cursor: pointer;
-  position: relative;
-  top: -2px;
-  background-color: rgb(224, 17, 17);
-}
-
-button:disabled {
-  opacity: 0.4;
-}
-
 button.list {
   padding: 10px;
   font-weight: 700;
