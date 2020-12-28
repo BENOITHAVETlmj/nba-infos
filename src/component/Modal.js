@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDom from "react-dom";
 import useClickOutside from "../hooks/useClickOutside";
+import styled from "@emotion/styled";
 
-const MODAL_STYLE = {
+const StyledModal = styled.div({
   position: "fixed",
   top: "50%",
   left: "50%",
@@ -14,18 +15,18 @@ const MODAL_STYLE = {
   zIndex: 3,
   maxHeight: "70%",
   overflow: "auto",
-};
+});
 
-const OVERLAY_STYLES = {
+const Overlay = styled.div({
   position: "fixed",
-  top: 0,
-  bottom: 0,
-  right: 0,
-  left: 0,
+  top: "0",
+  bottom: "0",
+  right: "0",
+  left: "0",
   backgroundColor: "black",
-  opacity: 0.5,
-  zIndex: 3,
-};
+  opacity: "0.5",
+  zIndex: "3",
+});
 
 const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
   useClickOutside(ref, () => {
@@ -35,11 +36,11 @@ const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
 
   return ReactDom.createPortal(
     <>
-      <div style={OVERLAY_STYLES}></div>
-      <div style={MODAL_STYLE} ref={ref}>
+      <Overlay />
+      <StyledModal ref={ref}>
         <button onClick={onClose}>X</button>
         {children}
-      </div>
+      </StyledModal>
     </>,
     document.getElementById("portal")
   );
