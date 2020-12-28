@@ -39,7 +39,9 @@ const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
     <>
       <Overlay />
       <StyledModal ref={ref}>
-        <Button onClick={onClose}>X</Button>
+        <Button variant="primary" onClick={onClose}>
+          X
+        </Button>
         {children}
       </StyledModal>
     </>,
