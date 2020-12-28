@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
+// /** @jsxImportSource  @emotion/react */
 
 const LIST_ITEM_STYLE = {
   borderTop: "1px solid black",
@@ -38,7 +39,11 @@ function TeamSeasonGames(teamId) {
         <>
           <h3>Games and scores for 2019 season</h3>
           {gamesInfos.map((gameInfo) => (
-            <ul style={LIST_ITEM_STYLE} key={gameInfo.date}>
+            <ul
+              style={LIST_ITEM_STYLE}
+              key={gameInfo.date}
+              css={{ padding: "10px" }}
+            >
               <li>
                 {gameInfo.home_team} {gameInfo.home_team_score} -{" "}
                 {gameInfo.visitor_team} {gameInfo.visitor_team_score}

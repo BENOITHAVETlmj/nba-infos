@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 const Card = styled.li({
   border: "1px solid white",
   borderRadius: "3px",
-  padding: "1px 50px",
+  padding: "0 50px",
   "&:hover": {
     cursor: "pointer",
     position: "relative",

@@ -1,9 +1,10 @@
 import React from "react";
 import { Card } from "../ui/Card";
+// /** @jsxImportSource  @emotion/react */
 
 const Player = ({ player }) => {
   return (
-    <Card>
+    <Card css={{ margin: "10px" }}>
       <p>
         {player.first_name} {player.last_name}
       </p>

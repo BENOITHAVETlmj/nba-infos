@@ -18,36 +18,7 @@ code {
   height: auto;
 }
 
-button.list {
-  padding: 10px;
-  font-weight: 700;
-  margin-right: 30px;
-}
-
-button.page-number {
-  margin: 5px;
-  font-weight: 700;
-  min-width: 40px;
-}
-
-.page-number-from-to {
-  margin: 5px;
-  font-weight: 700;
-  min-width: 40px;
-  color: #01589b;
-  background-color: rgb(252, 252, 252);
-}
-
-.page-number-from-to:hover {
-  color: rgb(252, 252, 252);
-  background-color: #01589b;
-}
-
 ul {
   list-style: none;
   padding: 0px;
-}
-
-li {
-  margin: 10px;
 }

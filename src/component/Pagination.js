@@ -1,5 +1,18 @@
+// /** @jsxImportSource  @emotion/react */
 import React from "react";
 import { Button } from "../ui/Button";
+
+const css = {
+  margin: "5px",
+  fontWeight: "700",
+  minWidth: "40px",
+  color: "#01589b",
+  backgroundColor: "rgb(252, 252, 252)",
+  "&:hover": {
+    color: "rgb(252, 252, 252)",
+    backgroundColor: "#01589b",
+  },
+};
 
 const Pagination = ({ meta, setPage, page }) => {
   const [currentClickablePages, setCurrentClickablePages] = React.useState(1);
@@ -31,7 +44,9 @@ const Pagination = ({ meta, setPage, page }) => {
   return (
     <>
       <Button
-        className="page-number-from-to"
+        css={{
+          css,
+        }}
         disabled={page === 1}
         onClick={() => {
           setCurrentClickablePages((old) => Math.max(old - 10, 1));
@@ -40,9 +55,11 @@ const Pagination = ({ meta, setPage, page }) => {
       >
         Previous...
       </Button>
-      {pagesNumbers()} / {meta.total_pages}
+      {pagesNumbers()} / {meta.total_pages}{" "}
       <Button
-        className="page-number-from-to"
+        css={{
+          css,
+        }}
         disabled={page >= meta.total_pages - 9}
         onClick={() => {
           setCurrentClickablePages(
