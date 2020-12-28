@@ -3,15 +3,9 @@ import React from "react";
 import { Button } from "../ui/Button";
 
 const css = {
-  margin: "5px",
   fontWeight: "700",
   minWidth: "40px",
-  color: "#01589b",
-  backgroundColor: "rgb(252, 252, 252)",
-  "&:hover": {
-    color: "rgb(252, 252, 252)",
-    backgroundColor: "#01589b",
-  },
+  margin: "5px",
 };
 
 const Pagination = ({ meta, setPage, page }) => {
@@ -33,8 +27,8 @@ const Pagination = ({ meta, setPage, page }) => {
           );
         }}
         key={pageNumber}
-        className="page-number"
         variant="secondary"
+        css={css}
       >
         {pageNumber}
       </Button>
@@ -44,9 +38,7 @@ const Pagination = ({ meta, setPage, page }) => {
   return (
     <>
       <Button
-        css={{
-          css,
-        }}
+        css={css}
         disabled={page === 1}
         onClick={() => {
           setCurrentClickablePages((old) => Math.max(old - 10, 1));
@@ -57,9 +49,7 @@ const Pagination = ({ meta, setPage, page }) => {
       </Button>
       {pagesNumbers()} / {meta.total_pages}{" "}
       <Button
-        css={{
-          css,
-        }}
+        css={css}
         disabled={page >= meta.total_pages - 9}
         onClick={() => {
           setCurrentClickablePages(

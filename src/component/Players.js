@@ -1,8 +1,15 @@
+// /** @jsxImportSource  @emotion/react */
 import React from "react";
 import { useQuery } from "react-query";
 import Player from "./Player";
 import Pagination from "./Pagination";
 import { Button } from "../ui/Button";
+
+const cssPageButton = {
+  margin: "5px",
+  fontWeight: "700",
+  minWidth: "40px",
+};
 
 const fetchPlayers = async (key, page) => {
   const res = await fetch(
@@ -28,7 +35,7 @@ const Players = () => {
       {status === "success" && (
         <>
           <Button
-            className="page-number"
+            css={cssPageButton}
             onClick={() => setPage((old) => Math.max(old - 1, 1))}
             disabled={page === 1}
           >
@@ -36,7 +43,7 @@ const Players = () => {
           </Button>
           <span>page {page}</span>
           <Button
-            className="page-number"
+            css={cssPageButton}
             onClick={() => {
               if (!isPreviousData) {
                 setPage((old) => old + 1);
