@@ -1,10 +1,17 @@
 import React from "react";
 import "../index.css";
 import { Button } from "../ui/Button";
+import styled from "@emotion/styled";
+
+const StyledNav = styled.nav({
+  marginTop: "20px",
+  display: "flex",
+  justifyContent: "center",
+});
 
 const Nav = ({ setPage }) => {
   return (
-    <nav>
+    <StyledNav>
       <Button
         className="list"
         variant="primary"
@@ -19,7 +26,7 @@ const Nav = ({ setPage }) => {
       >
         players
       </Button>
-    </nav>
+    </StyledNav>
   );
 };
 

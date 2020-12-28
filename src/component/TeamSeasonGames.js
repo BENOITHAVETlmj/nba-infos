@@ -31,7 +31,6 @@ function TeamSeasonGames(teamId) {
       ],
       []
     );
-  // console.log(gamesInfos);
 
   return (
     <>

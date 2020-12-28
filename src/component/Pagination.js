@@ -21,6 +21,7 @@ const Pagination = ({ meta, setPage, page }) => {
         }}
         key={pageNumber}
         className="page-number"
+        variant="secondary"
       >
         {pageNumber}
       </Button>
