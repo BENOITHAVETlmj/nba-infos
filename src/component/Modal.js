@@ -32,7 +32,6 @@ const Modal = React.forwardRef(({ open, children, onClose }, ref) => {
     if (open) onClose();
   });
   if (!open) return null;
-  console.log(open);
 
   return ReactDom.createPortal(
     <>

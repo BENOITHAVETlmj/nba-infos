@@ -6,6 +6,7 @@ import TeamSeasonGames from "./TeamSeasonGames";
 const Team = ({ team }) => {
   const { modal, openModal, closeModal } = useModal();
   const modalRef = React.createRef();
+
   return (
     <>
       <Modal open={modal} onClose={closeModal} ref={modalRef}>
